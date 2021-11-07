@@ -1,0 +1,26 @@
+#mapid{  
+        width: 50% ;
+        height: 97.8vh;
+}
+
+
+.login-form  {
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 30px;
+
+}
+
+
+.login-form input[type="button"] {
+    
+    width: 30%;
+    padding: 15px;
+    background-color: #535b63;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+
+}
