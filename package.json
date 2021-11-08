@@ -1,12 +1,9 @@
 {
-  "homepage": "http://jk51887.github.io/nrppw-project",
   "name": "node-ssl-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy" : "gh-pages -d build",
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
