@@ -12,7 +12,11 @@ app.set('views', path.join(__dirname, 'views'));
 /*app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');*/
 app.set('view engine', 'pug');
-const port = process.env.PORT || 4080
+
+
+const port = process.env.PORT || 4080;
+
+const baseURL = process.env.APP_URL || `http://localhost:${port}`
 
 
 var myArray = new Array();
@@ -26,9 +30,15 @@ app.use(
     authRequired:false,
     auth0Logout:true,
     issuerBaseURL: process.env.ISSUER_BASE_URL,
-    baseURL:process.env.BASE_URL, 
+    baseURL:baseURL, 
     clientID: process.env.CLIENT_ID,
     secret: process.env.SECRET,
+    authRequired: false,
+    clientSecret: process.env.CLIENT_SECRET,
+    idpLogout: true,
+    authorizationParams: {
+      response_type: 'code',
+	},
 
   })
 );
@@ -78,17 +88,28 @@ function storeUser(user,lat,lon){
 }
 
 
-
+/*
 const sslServer = https.createServer(
     {
     key: fs.readFileSync(path.join(__dirname, 'cert' ,'key.pem')),
     cert: fs.readFileSync(path.join(__dirname,'cert', 'cert.pem')),
 },
 app);
-sslServer.listen(port, ()=> console.log('Secure server on port 3000'))
-
+sslServer.listen(port, ()=> console.log('Secure server on port}'))
+*/
 /*
-//app.listen(3000, ()=> {console.log('Secure server on port 3000')});
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })*/
+
+const hostname = '127.0.0.1';
+
+if (!process.env.PORT) {
+	https.createServer({
+    key: fs.readFileSync(path.join(__dirname, 'cert' ,'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname,'cert', 'cert.pem')),
+	}, app)
+		.listen(port, () => console.log(`Server running at https://${hostname}:${port}/`))
+} else {
+	app.listen(port, () => console.log(`Server running on ${baseURL}`))
+}
