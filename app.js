@@ -12,6 +12,8 @@ app.set('views', path.join(__dirname, 'views'));
 /*app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');*/
 app.set('view engine', 'pug');
+const port = process.env.PORT || 4080
+
 
 var myArray = new Array();
 
@@ -75,7 +77,7 @@ function storeUser(user,lat,lon){
   
 }
 
-
+/*
 
 const sslServer = https.createServer(
     {
@@ -85,5 +87,8 @@ const sslServer = https.createServer(
 app);
 sslServer.listen(3000, ()=> console.log('Secure server on port 3000'))
 
-
+*/
 //app.listen(3000, ()=> {console.log('Secure server on port 3000')});
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
