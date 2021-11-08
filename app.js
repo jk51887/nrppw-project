@@ -77,7 +77,7 @@ function storeUser(user,lat,lon){
   
 }
 
-/*
+
 
 const sslServer = https.createServer(
     {
@@ -85,10 +85,10 @@ const sslServer = https.createServer(
     cert: fs.readFileSync(path.join(__dirname,'cert', 'cert.pem')),
 },
 app);
-sslServer.listen(3000, ()=> console.log('Secure server on port 3000'))
+sslServer.listen(port, ()=> console.log('Secure server on port 3000'))
 
-*/
+/*
 //app.listen(3000, ()=> {console.log('Secure server on port 3000')});
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
-})
+})*/
